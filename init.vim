@@ -1,5 +1,28 @@
-set number relativenumber
 
+call plug#begin('C:\Users\ladon\AppData\Local\nvim\plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-pairs',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ ]
+
+set number relativenumber
+set hidden
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set incsearch
+set scrolloff=10
+set signcolumn=yes
+           
 noremap H ^
 noremap J }
 noremap K {
@@ -35,6 +58,6 @@ noremap <space>8p "8p
 noremap <space>8P "8P
 noremap <space>9p "9p
 noremap <space>9P "9P
-
 noremap <C-Right> gt
 noremap <C-Left> gT
+
