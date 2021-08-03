@@ -1,3 +1,5 @@
+set number relativenumber
+
 noremap H ^
 noremap J }
 noremap K {
@@ -34,7 +36,5 @@ noremap <space>8P "8P
 noremap <space>9p "9p
 noremap <space>9P "9P
 
-noremap <space><C-y> "+y
-noremap <space><C-p> "+p
 noremap <C-Right> gt
 noremap <C-Left> gT
