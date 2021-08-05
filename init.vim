@@ -3,10 +3,18 @@ let mapleader=" "
 call plug#begin('C:\Users\ladon\AppData\Local\nvim\plugged')
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'preservim/nerdtree'
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'airblade/vim-gitgutter'
 
 call plug#end()
 
-"======= coc-extension-stuff ========================================
+command Resource :source C:\Users\ladon\AppData\Local\nvim\init.vim
+
+" ======= coc-extension-stuff ========================================
+
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-pairs',
@@ -143,27 +151,38 @@ command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organize
 " provide custom statusline: lightline.vim, vim-airline.
 set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
-" Mappings for CoCList
-" Show all diagnostics.
-nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions.
-nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
-" Show commands.
-nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document.
-nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols.
-nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list.
-nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
- 
+" ===================================================================
+
+" ====== NERDTree ===================================================
+
+nnoremap <leader>n :NERDTreeFocus<CR>
+
+" Start NERDTree when Vim is started without file arguments.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists('s:std_in') | NERDTree | endif
+
 "====================================================================
 
-" basic-stuff
+" ====== onehalf theme ==============================================
+
+syntax on
+set t_Co=256
+set cursorline
+colorscheme onehalfdark
+let g:airline_theme='onehalflight'
+" lightline
+" let g:lightline = { 'colorscheme': 'onehalfdark' }
+
+" ===================================================================
+
+" ====== FZF ========================================================
+
+noremap <C-o> :GFile<CR>
+
+" ===================================================================
+
+" ====== basic-stuff ================================================
+
 set number relativenumber
 set hidden
 set tabstop=2
